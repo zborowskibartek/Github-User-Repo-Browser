@@ -1,20 +1,20 @@
 package com.zborowski.bartek.githubbrowser.repository.domain;
 
-class GithubRepo {
+public class GithubRepository {
 
     private final String name;
     private final int stars;
 
-    GithubRepo(String name, int stars) {
+    public GithubRepository(String name, int stars) {
         this.name = name;
         this.stars = stars;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    int getStars() {
+    public int getStars() {
         return stars;
     }
 
