@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 public class GithubUserRepositoriesFacadeConfiguration {
 
     @Bean
-    GithubUserRepositoriesFacade githubUserReposFacade(GithubUserRepositoriesProvider githubUserRepositoriesProvider){
+    public GithubUserRepositoriesFacade createGithubUserRepositoriesFacade(GithubUserRepositoriesProvider githubUserRepositoriesProvider){
         GithubUserRepositoriesService githubUserRepositoriesService = new GithubUserRepositoriesService(githubUserRepositoriesProvider);
         return new GithubUserRepositoriesFacade(githubUserRepositoriesService);
     }

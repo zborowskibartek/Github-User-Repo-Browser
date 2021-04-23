@@ -24,25 +24,25 @@ class GithubUserRepositoriesClient implements GithubUserRepositoriesProvider {
     }
 
     @Override
-    public GithubUserRepositories getUserRepositories(String userName) {
-        String path = createPath(userName);
+    public GithubUserRepositories getUserRepositories(String username) {
+        String path = createPath(username);
         GithubRepositoriesDto[] dtoRepositories;
         try {
             dtoRepositories = restTemplate.getForObject(path, GithubRepositoriesDto[].class);
         } catch (Exception exception) {
             throw new InvalidUserException(exception.getMessage());
         }
-        return mapToGithubUserRepositories(userName, dtoRepositories);
+        return mapToGithubUserRepositories(username, dtoRepositories);
     }
 
-    private GithubUserRepositories mapToGithubUserRepositories(String userName, GithubRepositoriesDto[] dtoRepositories) {
+    private GithubUserRepositories mapToGithubUserRepositories(String username, GithubRepositoriesDto[] dtoRepositories) {
         List<GithubRepository> repositories = Arrays.stream(dtoRepositories)
                 .map(repository -> new GithubRepository(repository.getName(), repository.getStars()))
                 .collect(Collectors.toList());
-        return new GithubUserRepositories(repositories, userName);
+        return new GithubUserRepositories(repositories, username);
     }
 
-    private String createPath(String userName) {
-        return BASE_PATH + USERS_PATH + userName + REPOS_PATH;
+    private String createPath(String username) {
+        return BASE_PATH + USERS_PATH + username + REPOS_PATH;
     }
 }

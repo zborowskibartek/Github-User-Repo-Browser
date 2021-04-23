@@ -7,22 +7,22 @@ import java.util.List;
 public class GithubUserRepositoriesDto {
 
     private List<GithubRepository> repositories;
-    private String userName;
+    private String username;
 
-    public GithubUserRepositoriesDto(List<GithubRepository> githubRepos, String userName) {
-        this.repositories = githubRepos;
-        this.userName = userName;
+    public GithubUserRepositoriesDto(List<GithubRepository> repositories, String username) {
+        this.repositories = repositories;
+        this.username = username;
     }
 
     public GithubUserRepositoriesDto() {
     }
 
-    public List<GithubRepository> getGithubRepos() {
+    public List<GithubRepository> getRepositories() {
         return repositories;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public void addRepo(GithubRepository githubRepo) {

@@ -4,20 +4,20 @@ import java.util.List;
 
 public class GithubUserRepositories {
 
-    private final List<GithubRepository> repositories;
     private final String username;
+    private final List<GithubRepository> repositories;
 
     public GithubUserRepositories(List<GithubRepository> repositories, String username) {
         this.repositories = repositories;
         this.username = username;
     }
 
-    public List<GithubRepository> getGithubRepositories() {
-        return repositories;
+    public String getUsername() {
+        return username;
     }
 
-    public String getUserName() {
-        return username;
+    public List<GithubRepository> getRepositories() {
+        return repositories;
     }
 
 }
