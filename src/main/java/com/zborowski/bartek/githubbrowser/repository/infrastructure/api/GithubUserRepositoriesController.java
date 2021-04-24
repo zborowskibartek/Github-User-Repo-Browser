@@ -3,6 +3,9 @@ package com.zborowski.bartek.githubbrowser.repository.infrastructure.api;
 
 import com.zborowski.bartek.githubbrowser.repository.domain.GithubUserRepositories;
 import com.zborowski.bartek.githubbrowser.repository.domain.GithubUserRepositoriesFacade;
+import com.zborowski.bartek.githubbrowser.repository.domain.GithubUserStars;
+import com.zborowski.bartek.githubbrowser.repository.domain.InvalidUsernameException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,4 +28,15 @@ public class GithubUserRepositoriesController {
         return ResponseEntity.ok(repositories);
     }
 
+    @GetMapping("/stars")
+    public ResponseEntity<GithubUserStars> getAllStarsFromUserRepositories(@RequestParam(value = "username") String username) {
+        GithubUserStars sumOfAllStarsFromUserRepos = githubUserRepositoriesFacade.getAllStarsUserRepositories(username);
+        return ResponseEntity.ok(sumOfAllStarsFromUserRepos);
+    }
+
+    @ExceptionHandler(InvalidUsernameException.class)
+    private ResponseEntity<GithubUserRepositoriesErrorResponse> handleInvalidUsernameException(InvalidUsernameException exception) {
+        GithubUserRepositoriesErrorResponse errors = new GithubUserRepositoriesErrorResponse(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errors);
+    }
 }

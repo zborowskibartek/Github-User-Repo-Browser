@@ -3,8 +3,9 @@ package com.zborowski.bartek.githubbrowser.repository.infrastructure.client;
 import com.zborowski.bartek.githubbrowser.repository.domain.GithubRepository;
 import com.zborowski.bartek.githubbrowser.repository.domain.GithubUserRepositories;
 import com.zborowski.bartek.githubbrowser.repository.domain.GithubUserRepositoriesProvider;
-import com.zborowski.bartek.githubbrowser.repository.domain.InvalidUserException;
-import com.zborowski.bartek.githubbrowser.repository.infrastructure.dto.GithubRepositoriesDto;
+import com.zborowski.bartek.githubbrowser.repository.domain.InvalidUsernameException;
+import com.zborowski.bartek.githubbrowser.repository.infrastructure.client.dto.GithubRepositoriesDto;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
@@ -29,8 +30,8 @@ class GithubUserRepositoriesClient implements GithubUserRepositoriesProvider {
         GithubRepositoriesDto[] dtoRepositories;
         try {
             dtoRepositories = restTemplate.getForObject(path, GithubRepositoriesDto[].class);
-        } catch (Exception exception) {
-            throw new InvalidUserException(exception.getMessage());
+        } catch (HttpClientErrorException.NotFound exception) {
+            throw new InvalidUsernameException(username);
         }
         return mapToGithubUserRepositories(username, dtoRepositories);
     }

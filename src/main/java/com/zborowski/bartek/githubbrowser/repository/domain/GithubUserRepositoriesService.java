@@ -12,4 +12,11 @@ class GithubUserRepositoriesService {
         return githubUserRepositoriesProvider.getUserRepositories(username);
     }
 
+    GithubUserStars getAllStarsUserRepositories(String username) {
+        GithubUserRepositories repositories = githubUserRepositoriesProvider.getUserRepositories(username);
+        int sumStars = repositories.getRepositories().stream()
+                .mapToInt(GithubRepository::getStars)
+                .sum();
+        return new GithubUserStars(username, sumStars);
+    }
 }

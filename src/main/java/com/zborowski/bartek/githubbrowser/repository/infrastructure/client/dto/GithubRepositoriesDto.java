@@ -1,4 +1,4 @@
-package com.zborowski.bartek.githubbrowser.repository.infrastructure.dto;
+package com.zborowski.bartek.githubbrowser.repository.infrastructure.client.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -20,15 +20,8 @@ public class GithubRepositoriesDto {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Integer getStars() {
         return stars;
     }
 
-    public void setStars(Integer stars) {
-        this.stars = stars;
-    }
 }

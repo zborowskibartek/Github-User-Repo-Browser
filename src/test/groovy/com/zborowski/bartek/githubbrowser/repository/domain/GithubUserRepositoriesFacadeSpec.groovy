@@ -1,8 +1,5 @@
-package com.zborowski.bartek.githubbrowser.repository
+package com.zborowski.bartek.githubbrowser.repository.domain
 
-import com.zborowski.bartek.githubbrowser.repository.domain.GithubUserRepositoriesFacade
-import com.zborowski.bartek.githubbrowser.repository.domain.GithubUserRepositoriesFacadeConfiguration
-import com.zborowski.bartek.githubbrowser.repository.domain.GithubUserRepositoriesProvider
 import spock.lang.Specification
 
 class GithubUserRepositoriesFacadeSpec extends Specification {

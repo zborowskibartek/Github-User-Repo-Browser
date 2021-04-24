@@ -1,6 +1,7 @@
 package com.zborowski.bartek.githubbrowser.repository.domain;
 
 import java.util.List;
+import java.util.Objects;
 
 public class GithubUserRepositories {
 
@@ -20,4 +21,19 @@ public class GithubUserRepositories {
         return repositories;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GithubUserRepositories that = (GithubUserRepositories) o;
+        if (!Objects.equals(username, that.username)) return false;
+        return Objects.equals(repositories, that.repositories);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = username != null ? username.hashCode() : 0;
+        result = 31 * result + (repositories != null ? repositories.hashCode() : 0);
+        return result;
+    }
 }

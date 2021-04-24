@@ -12,8 +12,12 @@ class GithubUserRepositoriesBuilder {
         return new GithubUserRepositoriesBuilder()
     }
 
-    def addRepo(String name, int stars) {
+    def withRepo(String name, int stars) {
         this.repositories.add(new GithubRepository(name, stars))
+        return this
+    }
+    def setUsername(String username) {
+        this.username = username
         return this
     }
 

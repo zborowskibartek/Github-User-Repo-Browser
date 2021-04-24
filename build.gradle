@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'groovy'
+	id 'com.adarshr.test-logger' version '3.0.0'
 }
 
 group = 'com.zborowski.bartek'

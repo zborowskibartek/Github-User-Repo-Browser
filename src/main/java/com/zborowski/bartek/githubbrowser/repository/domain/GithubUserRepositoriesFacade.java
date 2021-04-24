@@ -12,4 +12,8 @@ public class GithubUserRepositoriesFacade {
         return githubUserRepositoriesService.getUserRepositories(username);
     }
 
+    public GithubUserStars getAllStarsUserRepositories(String username) {
+        return githubUserRepositoriesService.getAllStarsUserRepositories(username);
+    }
+
 }

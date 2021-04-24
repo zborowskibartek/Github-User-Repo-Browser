@@ -1,4 +1,4 @@
-package com.zborowski.bartek.githubbrowser.repository.infrastructure.dto;
+package com.zborowski.bartek.githubbrowser.repository.infrastructure.client.dto;
 
 import com.zborowski.bartek.githubbrowser.repository.domain.GithubRepository;
 
