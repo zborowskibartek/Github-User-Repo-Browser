@@ -5,7 +5,6 @@ Github User Repo Browser is a simple project to browse the Github repositories f
 ## ⚙️ Pre-requisites
 
 - Java 11
-- Gradle 6+
 
 ## 🕛 Installation
 
@@ -13,19 +12,19 @@ Github User Repo Browser is a simple project to browse the Github repositories f
 
 - Clone the project with the following command:
 
-`git clone https://github.com/zborowskibartek/Gtihub-User-Repo-Browser.git`
+`git clone https://github.com/zborowskibartek/github-user-repo-browser.git`
 
 ### Running
 
 - Build and run application with command:
 
-`gradle bootRun`
+`./gradlew bootRun`
 
 ### Testing
 
 - Run tests with command:
 
-`gradle test`
+`./gradlew test`
 
 ## ✨ Getting Started
 
