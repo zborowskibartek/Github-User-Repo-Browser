@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class GithubUserRepositoriesFacadeConfiguration {
+class GithubUserRepositoriesFacadeConfiguration {
 
     @Bean
-    public GithubUserRepositoriesFacade createGithubUserRepositoriesFacade(GithubUserRepositoriesProvider githubUserRepositoriesProvider){
+    GithubUserRepositoriesFacade createGithubUserRepositoriesFacade(GithubUserRepositoriesProvider githubUserRepositoriesProvider) {
         GithubUserRepositoriesService githubUserRepositoriesService = new GithubUserRepositoriesService(githubUserRepositoriesProvider);
         return new GithubUserRepositoriesFacade(githubUserRepositoriesService);
     }

@@ -45,7 +45,7 @@ class GithubUserRepositoriesFacadeTest extends GithubUserRepositoriesFacadeSpec 
             stubUserRepositoriesToThrowInvalidUserException(username)
 
         when:
-            githubUserRepositoriesFacade.getAllStarsUserRepositories(username)
+            githubUserRepositoriesFacade.getAllStarsUserRepositories(username)g
 
         then:
             def exception = thrown(InvalidUsernameException)

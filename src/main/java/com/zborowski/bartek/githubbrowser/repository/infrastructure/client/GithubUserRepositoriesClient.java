@@ -33,10 +33,10 @@ class GithubUserRepositoriesClient implements GithubUserRepositoriesProvider {
         } catch (HttpClientErrorException.NotFound exception) {
             throw new InvalidUsernameException(username);
         }
-        return mapToGithubUserRepositories(username, dtoRepositories);
+        return mapToGithubUserRepositories(dtoRepositories, username);
     }
 
-    private GithubUserRepositories mapToGithubUserRepositories(String username, GithubRepositoriesDto[] dtoRepositories) {
+    private GithubUserRepositories mapToGithubUserRepositories(GithubRepositoriesDto[] dtoRepositories, String username) {
         List<GithubRepository> repositories = Arrays.stream(dtoRepositories)
                 .map(repository -> new GithubRepository(repository.getName(), repository.getStars()))
                 .collect(Collectors.toList());

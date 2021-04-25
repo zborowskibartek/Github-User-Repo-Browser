@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static com.zborowski.bartek.githubbrowser.repository.infrastructure.api.GithubResponseMapper.*;
+
 @RestController
 @RequestMapping("/repositories")
 public class GithubUserRepositoriesController {
@@ -20,18 +22,18 @@ public class GithubUserRepositoriesController {
     }
 
     @GetMapping
-    public ResponseEntity<GithubUserRepositories> getUserRepositories(@RequestParam(value = "username") String username) {
+    public ResponseEntity<GithubUserRepositoriesResponse> getUserRepositories(@RequestParam(value = "username") String username) {
         GithubUserRepositories repositories = githubUserRepositoriesFacade.getUserRepositories(username);
         if (repositories == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(repositories);
+        return ResponseEntity.ok(mapRepositoriesToResponse(repositories));
     }
 
     @GetMapping("/stars")
-    public ResponseEntity<GithubUserStars> getAllStarsFromUserRepositories(@RequestParam(value = "username") String username) {
-        GithubUserStars sumOfAllStarsFromUserRepos = githubUserRepositoriesFacade.getAllStarsUserRepositories(username);
-        return ResponseEntity.ok(sumOfAllStarsFromUserRepos);
+    public ResponseEntity<GithubUserStarsResponse> getAllStarsFromUserRepositories(@RequestParam(value = "username") String username) {
+        GithubUserStars stars = githubUserRepositoriesFacade.getAllStarsUserRepositories(username);
+        return ResponseEntity.ok(mapStarsToResponse(stars));
     }
 
     @ExceptionHandler(InvalidUsernameException.class)
