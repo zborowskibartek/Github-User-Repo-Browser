@@ -58,7 +58,7 @@ class GithubUserRepositoriesFacadeTest extends GithubUserRepositoriesFacadeSpec 
         }
     }
 
-    private GithubUserRepositories createUserRepositories(String username) {
+    private static GithubUserRepositories createUserRepositories(String username) {
         def userRepositories = GithubUserRepositoriesBuilder.create()
                 .setUsername(username)
                 .withRepo("1st repository", 0)
@@ -67,7 +67,7 @@ class GithubUserRepositoriesFacadeTest extends GithubUserRepositoriesFacadeSpec 
         return userRepositories
     }
 
-    private GithubUserStars createUserStars(String username) {
+    private static GithubUserStars createUserStars(String username) {
         def userStars = GithubUserStarsBuilder.create()
                 .setUsername(username)
                 .setStars(50)

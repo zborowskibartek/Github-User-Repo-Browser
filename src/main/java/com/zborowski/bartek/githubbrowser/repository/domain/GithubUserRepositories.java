@@ -36,4 +36,12 @@ public class GithubUserRepositories {
         result = 31 * result + (repositories != null ? repositories.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "GithubUserRepositories{" +
+                "username='" + username + '\'' +
+                ", repositories=" + repositories +
+                '}';
+    }
 }

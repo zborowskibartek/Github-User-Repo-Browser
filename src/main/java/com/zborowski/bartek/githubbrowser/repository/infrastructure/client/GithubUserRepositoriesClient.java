@@ -14,17 +14,17 @@ import java.util.stream.Collectors;
 
 class GithubUserRepositoriesClient implements GithubUserRepositoriesProvider {
 
-    private static final String BASE_PATH = "https://api.github.com";
     private static final String USERS_PATH = "/users/";
-    private static final String REPOS_PATH = "/repos";
+    private static final String REPOS_PATH = "/repos?";
 
     private final RestTemplate restTemplate;
+    private final String basePath;
 
-    GithubUserRepositoriesClient(RestTemplate restTemplate) {
+    GithubUserRepositoriesClient(RestTemplate restTemplate, String basePath) {
         this.restTemplate = restTemplate;
+        this.basePath = basePath;
     }
 
-    @Override
     public GithubUserRepositories getUserRepositories(String username) {
         String path = createPath(username);
         GithubRepositoriesDto[] dtoRepositories;
@@ -44,6 +44,6 @@ class GithubUserRepositoriesClient implements GithubUserRepositoriesProvider {
     }
 
     private String createPath(String username) {
-        return BASE_PATH + USERS_PATH + username + REPOS_PATH;
+        return basePath + USERS_PATH + username + REPOS_PATH;
     }
 }

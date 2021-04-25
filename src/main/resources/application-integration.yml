@@ -1,0 +1,2 @@
+spring:
+  basePath: http://localhost:8081

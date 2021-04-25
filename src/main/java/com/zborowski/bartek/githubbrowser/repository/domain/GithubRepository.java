@@ -1,5 +1,7 @@
 package com.zborowski.bartek.githubbrowser.repository.domain;
 
+import java.util.Objects;
+
 public class GithubRepository {
 
     private final String name;
@@ -18,4 +20,19 @@ public class GithubRepository {
         return stars;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GithubRepository that = (GithubRepository) o;
+        if (stars != that.stars) return false;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + stars;
+        return result;
+    }
 }

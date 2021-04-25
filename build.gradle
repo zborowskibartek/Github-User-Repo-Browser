@@ -21,6 +21,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.spockframework:spock-core:2.0-M5-groovy-2.5'
 	testImplementation 'org.spockframework:spock-spring:2.0-M5-groovy-2.5'
+	testCompile "com.github.tomakehurst:wiremock-jre8:2.27.2"
 
 }
 
