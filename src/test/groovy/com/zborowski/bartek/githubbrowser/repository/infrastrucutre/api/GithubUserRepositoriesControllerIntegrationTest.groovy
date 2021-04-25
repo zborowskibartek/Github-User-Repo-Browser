@@ -3,6 +3,7 @@ package com.zborowski.bartek.githubbrowser.repository.infrastrucutre.api
 import com.zborowski.bartek.githubbrowser.repository.infrastructure.api.GithubUserRepositoriesResponse
 import com.zborowski.bartek.githubbrowser.repository.infrastructure.api.GithubUserStarsResponse
 import org.springframework.http.HttpStatus
+import org.springframework.web.client.HttpClientErrorException
 
 class GithubUserRepositoriesControllerIntegrationTest extends ControllerIntegrationSpec {
 
@@ -37,5 +38,32 @@ class GithubUserRepositoriesControllerIntegrationTest extends ControllerIntegrat
                 getBody().getSumStars() == 0
                 getStatusCode() == HttpStatus.OK
             }
+    }
+
+    def "should return status code 400 for invalid username"() {
+        given:
+            def username = "zborowskibartek"
+            def invalidUsername = "invalidUsername"
+            stubGithubUserRepositoriesClient(400, invalidUsername)
+
+        when:
+            restTemplate.getForEntity(localPath("/repositories?username=") + username, GithubUserRepositoriesResponse.class)
+
+        then:
+            def exception = thrown(HttpClientErrorException.class)
+            exception.getStatusCode() == HttpStatus.NOT_FOUND
+    }
+    def "should return status code 500 for repository provider exception"() {
+        given:
+            def username = "zborowskibartek"
+            def invalidUsername = "invalidUsername"
+            stubGithubUserRepositoriesClient(400, invalidUsername)
+
+        when:
+            restTemplate.getForEntity(localPath("/repositories?username=") + username, GithubUserRepositoriesResponse.class)
+
+        then:
+            def exception = thrown(HttpClientErrorException.class)
+            exception.getStatusCode() == HttpStatus.NOT_FOUND
     }
 }

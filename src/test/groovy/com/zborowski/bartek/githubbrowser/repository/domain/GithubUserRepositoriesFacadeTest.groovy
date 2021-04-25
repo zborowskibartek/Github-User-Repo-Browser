@@ -1,9 +1,5 @@
 package com.zborowski.bartek.githubbrowser.repository.domain
 
-
-import com.zborowski.bartek.githubbrowser.repository.util.GithubUserRepositoriesBuilder
-import com.zborowski.bartek.githubbrowser.repository.util.GithubUserStarsBuilder
-
 class GithubUserRepositoriesFacadeTest extends GithubUserRepositoriesFacadeSpec {
 
     def "should find repositories for user by username"() {
@@ -57,6 +53,4 @@ class GithubUserRepositoriesFacadeTest extends GithubUserRepositoriesFacadeSpec 
             throw new InvalidUsernameException(username)
         }
     }
-
-
 }

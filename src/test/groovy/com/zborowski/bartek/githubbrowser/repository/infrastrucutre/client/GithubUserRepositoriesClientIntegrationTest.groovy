@@ -1,6 +1,5 @@
 package com.zborowski.bartek.githubbrowser.repository.infrastrucutre.client
 
-
 import com.zborowski.bartek.githubbrowser.repository.domain.GithubUserRepositories
 import com.zborowski.bartek.githubbrowser.repository.domain.InvalidRepositoriesProviderException
 import com.zborowski.bartek.githubbrowser.repository.domain.InvalidUsernameException
