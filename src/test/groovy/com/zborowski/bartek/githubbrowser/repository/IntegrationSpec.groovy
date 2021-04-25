@@ -34,8 +34,8 @@ class IntegrationSpec extends Specification {
     }
 
     def stubGithubUserRepositoriesClient(int statusCode, String username) {
-        createStubPerPage(username, statusCode, "/client/githubUserRepositoriesResponsePageOne.json", 1)
-        createStubPerPage(username, statusCode, "/client/githubUserRepositoriesResponsePageTwo.json", 2)
+        createStubPerPage(username, statusCode, "client/githubUserRepositoriesResponsePageOne.json", 1)
+        createStubPerPage(username, statusCode, "client/githubUserRepositoriesResponsePageTwo.json", 2)
     }
 
     private StubMapping createStubPerPage(String username, int statusCode, String bodyFilePath, int page) {
