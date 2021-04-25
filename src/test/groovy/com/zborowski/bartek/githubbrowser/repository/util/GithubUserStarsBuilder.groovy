@@ -1,6 +1,5 @@
 package com.zborowski.bartek.githubbrowser.repository.util
 
-
 import com.zborowski.bartek.githubbrowser.repository.domain.GithubUserStars
 
 class GithubUserStarsBuilder {
@@ -25,5 +24,4 @@ class GithubUserStarsBuilder {
     def build() {
         return new GithubUserStars(username, sumStars)
     }
-
 }

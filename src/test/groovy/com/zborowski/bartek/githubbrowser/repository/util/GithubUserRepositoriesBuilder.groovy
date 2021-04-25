@@ -28,5 +28,4 @@ class GithubUserRepositoriesBuilder {
     def build() {
         return new GithubUserRepositories(repositories, username)
     }
-
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GithubRepositoriesDto {
 
+    @JsonProperty(value = "name")
     private String name;
     @JsonProperty(value = "stargazers_count")
     private Integer stars;

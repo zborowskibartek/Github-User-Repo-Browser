@@ -16,9 +16,9 @@ class GithubUserRepositoriesFacadeTest extends GithubUserRepositoriesFacadeSpec 
             githubUserRepositoriesFacade.getUserRepositories(username) == userRepositories
     }
 
-    def "should throw exception when find repositories and username not exist"() {
+    def "should throw exception when return repositories for not existent username"() {
         given:
-            def username = "UsernameDoesNotExist"
+            def username = "usernameDoesNotExist"
             stubUserRepositoriesToThrowInvalidUserException(username)
         when:
             githubUserRepositoriesFacade.getUserRepositories(username)
@@ -28,7 +28,7 @@ class GithubUserRepositoriesFacadeTest extends GithubUserRepositoriesFacadeSpec 
             exception.getUsername() == username
     }
 
-    def "should count sum of stars for user"() {
+    def "should return stars for user by username"() {
         given:
             def username = "allegro"
             def userRepositories = createUserRepositories(username)
@@ -39,13 +39,13 @@ class GithubUserRepositoriesFacadeTest extends GithubUserRepositoriesFacadeSpec 
             githubUserRepositoriesFacade.getAllStarsUserRepositories(username) == userStars
     }
 
-    def "should throw exception when find stars and username not exist"() {
+    def "should throw exception when return stars for not existent username"() {
         given:
-            def username = "UsernameDoesNotExist"
+            def username = "usernameDoesNotExist"
             stubUserRepositoriesToThrowInvalidUserException(username)
 
         when:
-            githubUserRepositoriesFacade.getAllStarsUserRepositories(username)g
+            githubUserRepositoriesFacade.getAllStarsUserRepositories(username)
 
         then:
             def exception = thrown(InvalidUsernameException)
@@ -58,20 +58,5 @@ class GithubUserRepositoriesFacadeTest extends GithubUserRepositoriesFacadeSpec 
         }
     }
 
-    private static GithubUserRepositories createUserRepositories(String username) {
-        def userRepositories = GithubUserRepositoriesBuilder.create()
-                .setUsername(username)
-                .withRepo("1st repository", 0)
-                .withRepo("2nd repository", 50)
-                .build()
-        return userRepositories
-    }
 
-    private static GithubUserStars createUserStars(String username) {
-        def userStars = GithubUserStarsBuilder.create()
-                .setUsername(username)
-                .setStars(50)
-                .build()
-        return userStars
-    }
 }

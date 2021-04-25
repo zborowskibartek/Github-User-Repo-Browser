@@ -15,8 +15,8 @@ class GithubUserRepositoriesErrorResponse {
     private static class GithubUserRepositoriesErrorResponseDetails {
         private final String message;
 
-        private GithubUserRepositoriesErrorResponseDetails(String message) {
-            this.message = message;
+        private GithubUserRepositoriesErrorResponseDetails(String message){
+                this.message = message;
         }
 
         public String getMessage() {
