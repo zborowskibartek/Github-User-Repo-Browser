@@ -14,6 +14,8 @@ Github User Repo Browser is a simple project to browse the Github repositories f
 
 `git clone https://github.com/zborowskibartek/github-user-repo-browser.git`
 
+- Then go into github-user-repo-browser directory and run one from following command listed below:
+
 ### Running
 
 - Build and run application with command:
